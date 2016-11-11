@@ -1,0 +1,43 @@
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TO DO LIST</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+</head>
+
+<body>
+    <div id="myDIV" class="header">
+        <h2>What To Do</h2>
+        <input type="text" id="myInput" placeholder="Add your action">
+        <span><h2>Choose Your time</h2></span>
+        <div class="timedate">
+            <p>Date:</p>
+            <input type="text" id="datepicker">
+            </br>
+            <p>Time:</p>
+            <input type="text" id="basicExample">
+        </div>
+        <span onclick="addNewElement();" class="addBtn">Add</span>
+    <div class="sorting">
+          <span>Sorting</span>
+          <input type="button" value="Date" onclick="sortByDate()" />
+          <input type="button" value="Name" onclick="sortByName()" />
+          <input type="button" value="No Sort" onclick="sortByName()" />
+    </div>
+    <div class="newsort">
+      <input type="button" value="Date" onclick="sortByDate()" />
+      <input type="button" value="Name" onclick="sortByName()" />
+      <input type="button" value="No Sort" onclick="sortByName()" />
+    </div>
+  </div>
+    <ul id="myUL"></ul>
+</body>
+<script src="main.js" charset="utf-8"></script>
+</html>
