@@ -22,13 +22,13 @@ div.timedate{
   padding-top: 15px;
 }*/
 #datepicker {
-  width:50%;
+  width:46%;
 }
 .date{
   padding-left: 15px;
 }
 #basicExample {
-  width:50%;
+  width:18%;
   margin-bottom: 25px;
 }
 .time{
@@ -46,17 +46,21 @@ input {
     float: left;
     font-size: 16px;
     text-align: center;
+    border-radius: 20px 20px;
 }
 
 input[type="button"]{
-  background-color: inherit;
+  background-color: yellow;
   border: none;
   width:100%;
   float: left;
   font-size: 14px;
-  text-align: left;
+  text-align: center;
+  margin: 5px;
 }
-
+input[type="button"]:hover{
+  cursor: pointer;
+}
 .addBtn {
     padding: 10px;
     width: 100%;
@@ -101,15 +105,25 @@ ul#myUL li:nth-child(odd) {
   border-radius: 20px 10px;
 }
 
-.newsort{
+.filters{
   margin: 10px;
   background-color:#3385ff;
-  padding: 30px 40px;
+  padding: 10px 20px;
   color: white;
   text-align: center;
   float: right;
   border-radius: 20px 10px;
 }
+
+.filters p{
+  padding: 0px;
+}
+
+input[disabled]{
+ opacity: 0.3;
+
+}
+
 
 .close {
   cursor: pointer;

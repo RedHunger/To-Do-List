@@ -13,31 +13,35 @@
 </head>
 
 <body>
-    <div id="myDIV" class="header">
+<div id="myDIV" class="header">
         <h2>What To Do</h2>
         <input type="text" id="myInput" placeholder="Add your action">
         <span><h2>Choose Your time</h2></span>
         <div class="timedate">
-            <p>Date:</p>
-            <input type="text" id="datepicker">
+                <p>Date:</p>
+                <input type="text" id="datepicker">
             </br>
             <p>Time:</p>
             <input type="text" id="basicExample">
         </div>
-        <span onclick="addNewElement();" class="addBtn">Add</span>
+    <span onclick="addNewElement();" class="addBtn">Add</span>
     <div class="sorting">
-          <span>Sorting</span>
-          <input type="button" value="Date" onclick="sortByDate()" />
-          <input type="button" value="Name" onclick="sortByName()" />
-          <input type="button" value="No Sort" onclick="sortByName()" />
+      <span>Sorting</span>
+      <input type="button" value="Date" onclick="" />
+      <input type="button" value="Name" onclick="sortByName();" />
+      <input type="button" value="No Sort" onclick="noSort();" />
     </div>
-    <div class="newsort">
-      <input type="button" value="Date" onclick="sortByDate()" />
-      <input type="button" value="Name" onclick="sortByName()" />
-      <input type="button" value="No Sort" onclick="sortByName()" />
+    <div class="filters">
+      <p>Filter</p>
+      <p>Date:</p>
+      <input type="checkbox" id='check_date' onchange="checkDate()"/>
+      <input type="text" id="newdatepicker" disabled />
+      <input type="button" value="Apply" onclick="filterByDate();" />
+      <p>Name:</p>
+      <input type="checkbox" id='check_date' />
     </div>
-  </div>
-    <ul id="myUL"></ul>
+</div>
+<ul id="myUL"></ul>
 </body>
 <script src="main.js" charset="utf-8"></script>
 </html>
