@@ -60,7 +60,15 @@ input[type="button"]{
 }
 input[type="button"]:hover{
   cursor: pointer;
+  background-color:;
 }
+.sorting input[type="button"]:last-child {
+  background-color: #ff1a1a;
+}
+.filters input[type="button"]:last-child {
+  background-color: #ff1a1a;
+}
+
 .addBtn {
     padding: 10px;
     width: 100%;

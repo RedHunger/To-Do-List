@@ -27,7 +27,7 @@
     <span onclick="addNewElement();" class="addBtn">Add</span>
     <div class="sorting">
       <span>Sorting</span>
-      <input type="button" value="Date" onclick="" />
+      <input type="button" value="Date" onclick="sortByDate();" />
       <input type="button" value="Name" onclick="sortByName();" />
       <input type="button" value="No Sort" onclick="noSort();" />
     </div>
@@ -38,7 +38,10 @@
       <input type="text" id="newdatepicker" disabled />
       <input type="button" value="Apply" onclick="filterByDate();" />
       <p>Name:</p>
-      <input type="checkbox" id='check_date' />
+      <input type="checkbox" id='check_name' onchange="checkName()"  />
+      <input type="text" id="inputname" placeholder="Your word" disabled>
+      <input type="button" value="Apply" onclick="filterByName();" />
+      <input type="button" value="ClearAllFilters" onclick="noFilters();" />
     </div>
 </div>
 <ul id="myUL"></ul>

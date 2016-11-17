@@ -2,9 +2,7 @@ $( function() {
     $("#datepicker").datepicker();
     $('#basicExample').timepicker();
     $('#newdatepicker').datepicker();
-  } );
-
-  
+} );
 
 function addNewElement() {
     var eleMMMMM = document.getElementById("myUL").children;
@@ -34,9 +32,9 @@ function addNewElement() {
     elemText.setAttribute('data-id',liElementsLength) ;
     elemText.appendChild(t);
     li.appendChild(elemText);
-    if (inputValue | datePicker | timePicker  === '' ) {
+    if (inputValue.length == 0 | datePicker.length == 0 | timePicker.length == 0 ) {
       console.log(inputValue + " "+ datePicker + " " + timePicker );
-        alert("You must write something!");
+        alert("You must write action/date/time !");
     } else {
         document.getElementById("myUL").appendChild(li);
 
@@ -76,134 +74,158 @@ var close = document.getElementsByClassName("close");
     }
 }
 
-// function sortByDate() {
-//     var mulpArr = [];
-//     var newTasks = [];
-//     var liElem = document.getElementById("myUL").children;
-//     var liElem=getElementsByClassName("point").innerHTML
-//     liElem = Array.prototype.slice.call(liElem[0]);
-//     for (var i = 0; i < liElem.length; i++) {
-//
-//         var j;
-//         for (var liNode = liElem[i], j = 0; j < 1; j++) {
-//           newTasks.push(liNode.getElementsByClassName("point").innerHTML);
-//
-//             // liNode.sort(function(liNode, liNode) {
-//             //     console.log(item1);
-//             //     console.log(item2);
-//             // });
-//         }
-//
-//         console.log(newTasks);
-//
-//     }
-// }
-
-// function sortByName(){
-//   var arrayspan=[];
-//   var elem = document.getElementsByClassName('point');
-//   for (var i=0; i < elem.length;i++){
-//       arrayspan.push(elem[i].innerHTML);
-//   }
-//   var newArray = arrayspan.sort();
-//
-//   for(var i = 0; i < elem.length; i++){
-//         elem[i].innerHTML = newArray[i];
-//     }
-//
-//   console.log(elem);
-//
-// }
-
-function sortByName() {
-    // var mylist = $('#myUL');
-    // var liElements = mylist.children('li').get();
-    // var elem =mylist.children('li').get()
-    var liElements = document.getElementById("myUL").children;
-    liElements = Array.prototype.slice.call(liElements);
-    var elem = document.getElementById("myUL").children;
-    elem = Array.prototype.slice.call(elem);
-    // debugger;
-    liElements.sort(function(a, b) {
-        var reg = /^[А-Я]|[A-Z]*/;
-        var compA = [];
-        var compB = [];
-         compA[0] = a.textContent.split(' ').join("").toUpperCase().match(reg);
-         compB[0] = b.textContent.split(' ').join("").toUpperCase().match(reg);
-        return (compA[0] < compB[0]) ? -1 : (compA[0] > compB[0]) ? 1 : 0;
-
-
-    });
-    for (var j = 0; j < elem.length; j++) {
-      elem.splice(j,1,liElements[j].innerHTML);
-    }
-  
-    for(var i = 0; i < elem.length; i++){
-        document.getElementById("myUL").children[i].innerHTML = elem[i];
-    }
-   removeElement();
-}
-
-function noSort(){
+function sortByDate() {
   var liElements = document.getElementById("myUL").children;
   liElements = Array.prototype.slice.call(liElements);
   var elem = document.getElementById("myUL").children;
   elem = Array.prototype.slice.call(elem);
   liElements.sort(function(a, b) {
-    // var compA = [];
-    // var compB = [];
+    var reg = /\d{2}\/\d{2}\/\d{4}/;
+    var compA = [];
+    var compB = [];
+    compA[0] = a.textContent.split(' ').join("").toUpperCase().match(reg)[0];
+    compB[0] = b.textContent.split(' ').join("").toUpperCase().match(reg)[0];
+    return (compA[0] < compB[0]) ? -1 : (compA[0] > compB[0]) ? 1 : 0;
+
+
+  });
+  for (var j = 0; j < elem.length; j++) {
+    elem.splice(j, 1, liElements[j].innerHTML);
+  }
+
+  for (var i = 0; i < elem.length; i++) {
+    document.getElementById("myUL").children[i].innerHTML = elem[i];
+  }
+  removeElement();
+}
+
+
+function sortByName() {
+  var liElements = document.getElementById("myUL").children;
+  liElements = Array.prototype.slice.call(liElements);
+  var elem = document.getElementById("myUL").children;
+  elem = Array.prototype.slice.call(elem);
+  liElements.sort(function(a, b) {
+    var reg = /^[А-Я]|[A-Z]*/;
+    // var reg = /\d{2}\/\d{2}\/\d{4}/;
+    var compA = [];
+    var compB = [];
+    compA[0] = a.textContent.split(' ').join("").toUpperCase().match(reg);
+    compB[0] = b.textContent.split(' ').join("").toUpperCase().match(reg);
+    return (compA[0] < compB[0]) ? -1 : (compA[0] > compB[0]) ? 1 : 0;
+
+
+  });
+  for (var j = 0; j < elem.length; j++) {
+    elem.splice(j, 1, liElements[j].innerHTML);
+  }
+
+  for (var i = 0; i < elem.length; i++) {
+    document.getElementById("myUL").children[i].innerHTML = elem[i];
+  }
+  removeElement();
+}
+
+function noSort() {
+  var liElements = document.getElementById("myUL").children;
+  liElements = Array.prototype.slice.call(liElements);
+  var elem = document.getElementById("myUL").children;
+  elem = Array.prototype.slice.call(elem);
+  console.log(liElements);
+  liElements.sort(function(a, b) {
     compA = a.childNodes[0].dataset.id;
     compB = b.childNodes[0].dataset.id;
     return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
   });
 
-  console.log(liElements);
+
   for (var j = 0; j < elem.length; j++) {
-      elem.splice(j,1,liElements[j].innerHTML);
-    }
-  
-  for(var i = 0; i < elem.length; i++){
-        document.getElementById("myUL").children[i].innerHTML = elem[i];
-    }
+    elem.splice(j, 1, liElements[j].innerHTML);
+  }
 
+  for (var i = 0; i < elem.length; i++) {
+    document.getElementById("myUL").children[i].innerHTML = elem[i];
+  }
 
+  removeElement();
 
 }
 
  
 function checkDate() {
-    var checkBox = document.getElementById("check_date");
-    var checkInput = document.getElementById("newdatepicker");
-    if (checkBox.checked) {
-        checkInput.removeAttribute('disabled');
-    } else {
-        checkInput.setAttribute('disabled','true');
-    }
+  var checkBox = document.getElementById("check_date");
+  var checkInput = document.getElementById("newdatepicker");
+  if (checkBox.checked) {
+    checkInput.removeAttribute('disabled');
+  } else {
+    checkInput.setAttribute('disabled', 'true');
+  }
 }
+
+function checkName() {
+  var checkBox = document.getElementById("check_name");
+  var checkInput = document.getElementById("inputname");
+  if (checkBox.checked) {
+    checkInput.removeAttribute('disabled');
+  } else {
+    checkInput.setAttribute('disabled', 'true');
+  }
+}
+
 
 
 function filterByDate() {
   var liElements = document.getElementById("myUL").children;
   var elem = document.getElementById("myUL").children;
   var datePicker = $("#newdatepicker").datepicker({
-      dateFormat: 'dd,MM,yyyy'
+    dateFormat: 'dd,MM,yyyy'
   }).val();
-  var newList=[];
+  var newList = [];
   liElements = Array.prototype.slice.call(liElements);
   elem = Array.prototype.slice.call(elem);
 
   for (var i = 0; i < elem.length; i++) {
-      if (elem[i].children[1].innerHTML == datePicker) {
-          newList.push(elem[i]);
-      }
-  }
+    if (elem[i].children[1].innerHTML == datePicker) {
+      newList.push(elem[i]);
+    } else {
+      elem[i].style.display = 'none';
+      var editElem = elem[i];
+      newList.push(editElem);
 
-  for (var j = 0; j < elem.length; j++) {
-    if (newList[j] !== undefined){
-    document.getElementById("myUL").children[j].innerHTML = newList[j].innerHTML;
-    } else{
-      document.getElementById("myUL").children[j].remove();
     }
   }
-  
+
+}
+
+function filterByName() {
+
+  var liElements = document.getElementById("myUL").children;
+  var elem = document.getElementById("myUL").children;
+  var inputName = document.getElementById('inputname').value;
+  var newList = [];
+  liElements = Array.prototype.slice.call(liElements);
+  elem = Array.prototype.slice.call(elem);
+  // debugger;
+  for (var i = 0; i < liElements.length; i++) {
+    var pointContent = liElements[i].textContent;
+    if (pointContent.indexOf(inputName) !== -1) {
+      newList.push(liElements[i]);
+    } else {
+      liElements[i].style.display = 'none';
+      var editElem = liElements[i];
+      newList.push(editElem);
+    }
+  }
+}
+
+function noFilters() {
+
+  var liElements = document.getElementById("myUL").children;
+  document.getElementById("check_name").checked = false;
+  document.getElementById("check_date").checked = false;
+  document.getElementById("inputname").setAttribute('disabled', true);
+  document.getElementById("newdatepicker").setAttribute('disabled', true);
+  for (var j = 0; j < liElements.length; j++) {
+    liElements[j].style.display = 'block';
+  }
 }
